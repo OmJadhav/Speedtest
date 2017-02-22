@@ -51,8 +51,9 @@ longtime global_time;
 	 global_time;\
 	 })
 
+// Buffer size - can tune the buffer size here
 #define BUFF_SIZE (1024 * 64)
-#define TRANSFER_SIZE (1024 * 1024 * 200)
+#define TRANSFER_SIZE (1024 * 1024 * 500)
 #define BILLION (1000000000)
 
 int write_full(int fd, void *buff, uint size) {
