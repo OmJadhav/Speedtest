@@ -7,7 +7,7 @@ make
 make clean
 
 ### launching server
-./server -s <IP_ADDR> -p <PORT_NO>
+./server -s \<IP_ADDR\> -p \<PORT_NO\>
 
 ###launching Client
-./client -s <IP_ADDR> -p <PORT_NO>
+./client -s \<IP_ADDR\> -p \<PORT_NO\>
