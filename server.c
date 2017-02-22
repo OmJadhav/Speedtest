@@ -18,7 +18,7 @@ int socket_create_and_accept(int port, char *ip_addr) {
 	server.sin_family = AF_INET;
 	server.sin_port = port;
 	inet_pton(AF_INET, ip_addr, &(server.sin_addr));
-//	server.sin_addr.s_addr = htonl(INADDR_ANY);
+	//	server.sin_addr.s_addr = htonl(INADDR_ANY);
 	/* Bind */
 	if ((err = bind(sfd, (struct sockaddr *) &server, sizeof(server))) < 0) {
 		socketperror("Error %d: at line %d: bind\n", err, __LINE__);
@@ -41,11 +41,11 @@ int socket_create_and_accept(int port, char *ip_addr) {
 }
 
 
-void
+	void
 usage(char *prog)
 {
-  fprintf(stderr, "usage: %s <-s Server ip addr> <-p port number> \n", prog);
-  exit(1);
+	fprintf(stderr, "usage: %s <-s Server ip addr> <-p port number> \n", prog);
+	exit(1);
 }
 
 int main(int argc, char *argv[]) {
@@ -53,29 +53,28 @@ int main(int argc, char *argv[]) {
 	int i = 0, j = 0;
 	int ret = 0;
 	uint port = -1;
-	char *ip_addr  = "NULL";
+	char *ip_addr  = NULL;
 	uchar buffer[BUFF_SIZE];
 
 	int c;
- 	opterr = 0;
-  	while ((c = getopt(argc, argv, "s:p:")) != -1) {
-    	switch (c) {
-    		case 's':
-      			ip_addr = strdup(optarg);
-      			break;
-	    	case 'p':
-	      		port = atoi(optarg);
-	      		break;
-	    	default:
-	      		usage(argv[0]);
-	      		exit(0);
-    }
-  }
-  	if (port == -1 || (strcmp(ip_addr, "NULL") == 0)) {
-     	usage(argv[0]);
-     	exit(0);
-   	}
-   	printf("%s %d\n", ip_addr, port);
+	opterr = 0;
+	while ((c = getopt(argc, argv, "s:p:")) != -1) {
+		switch (c) {
+			case 's':
+				ip_addr = strdup(optarg);
+				break;
+			case 'p':
+				port = atoi(optarg);
+				break;
+			default:
+				usage(argv[0]);
+				exit(0);
+		}
+	}
+	if (port == -1 || ip_addr == NULL) {
+		usage(argv[0]);
+		exit(0);
+	}
 	fd = socket_create_and_accept(port, ip_addr);
 
 	int n = TRANSFER_SIZE / BUFF_SIZE;

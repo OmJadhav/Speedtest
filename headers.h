@@ -24,15 +24,15 @@ char output[1000] = {0};
 
 #define socketperror(format, ...) \
 	sprintf(output, format, ##__VA_ARGS__); \
-	if (write(STDERR_FILENO, output, strlen(output)) == -1 || \
+if (write(STDERR_FILENO, output, strlen(output)) == -1 || \
 		fflush(stderr) < 0) \
-		perror("Error in writing to STDERR\n");
+perror("Error in writing to STDERR\n");
 
 #define shrdmem_perror(format, ...) \
 	sprintf(output, format, ##__VA_ARGS__); \
-	if (write(STDERR_FILENO, output, strlen(output)) == -1 || \
+if (write(STDERR_FILENO, output, strlen(output)) == -1 || \
 		fflush(stderr) < 0) \
-		perror("Error in writing to STDERR\n");
+perror("Error in writing to STDERR\n");
 
 int global_socketid = 0;
 typedef unsigned char uchar;
@@ -50,7 +50,7 @@ longtime global_time;
 	 clock_gettime(CLOCK_MONOTONIC, &global_res);\
 	 global_time = (global_res.tv_sec * BILLION) + global_res.tv_nsec;\
 	 global_time;\
-	})
+	 })
 
 #define BUFF_SIZE (1024 * 4)
 #define TRANSFER_SIZE (1024 * 1024 * 200)
@@ -65,7 +65,7 @@ int write_full(int fd, void *buff, uint size) {
 		buff = buff + rem;
 #if 0	
 		printf("In loop. rem = %u, write_size = %u, size = %u\n", rem,
-		write_size, size);
+				write_size, size);
 #endif
 	}
 	return size;
@@ -80,7 +80,7 @@ int read_full(int fd, void *buff, uint size) {
 		buff = buff + rem;
 #if 0
 		printf("In loop. rem = %u, read_size = %u, size = %u\n", rem,
-		read_size, size);
+				read_size, size);
 #endif
 	}
 	return size;
