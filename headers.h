@@ -51,7 +51,7 @@ longtime global_time;
 	 global_time;\
 	 })
 
-#define BUFF_SIZE (1024 * 4)
+#define BUFF_SIZE (1024 * 64)
 #define TRANSFER_SIZE (1024 * 1024 * 200)
 #define BILLION (1000000000)
 
