@@ -64,9 +64,6 @@ int main(int argc, char *argv[]) {
 		exit(0);
 	}
 
-	/* Fill the buffers with some data */
-	//memset(_buffer, 'e', sizeof(uchar) * BUFF_SIZE);
-
 	if ((fd = socket_create_and_connect(port, ip_addr)) < 0) {
 		socketperror("Error %d: at line %d: socket_create_and_connect\n", fd,
 				__LINE__);
@@ -81,7 +78,6 @@ int main(int argc, char *argv[]) {
 		if ((ret = read_full(fd, buffer, BUFF_SIZE))  != BUFF_SIZE) {
 			printf("Error in reading = %d\n",ret);
 		}
-		// printf("Read %d th buffer\n", i);
 	}
 	end = get_current_time();
 

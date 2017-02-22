@@ -18,7 +18,7 @@ int socket_create_and_accept(int port, char *ip_addr) {
 	server.sin_family = AF_INET;
 	server.sin_port = port;
 	inet_pton(AF_INET, ip_addr, &(server.sin_addr));
-	//	server.sin_addr.s_addr = htonl(INADDR_ANY);
+	
 	/* Bind */
 	if ((err = bind(sfd, (struct sockaddr *) &server, sizeof(server))) < 0) {
 		socketperror("Error %d: at line %d: bind\n", err, __LINE__);
