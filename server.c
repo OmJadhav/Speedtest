@@ -1,19 +1,17 @@
 #include "headers.h"
 
 int socket_create_and_accept(int port, char *ip_addr) {
+	
 	/* Create a socket for local communication (within the same device) */
 	int option = 1;
 	int err = 0;
 	struct sockaddr_in server;
 	int sfd = global_socketid = socket(AF_INET, SOCK_STREAM, 0);
 
-	struct hostent *server_ptr;
-
 	if (sfd < 0) {
 		socketperror("Error %d: at line %d: socket creation\n", sfd, __LINE__);
 		exit(1);
 	}
-
 	memset(&server, 0, sizeof(server));
 	server.sin_family = AF_INET;
 	server.sin_port = port;
@@ -39,7 +37,6 @@ int socket_create_and_accept(int port, char *ip_addr) {
 	/* return the client fd */
 	return err;
 }
-
 
 	void
 usage(char *prog)
@@ -82,7 +79,6 @@ int main(int argc, char *argv[]) {
 	for (i = 0; i < n; ++i) {
 		if((ret = write_full(fd, buffer, BUFF_SIZE)) != BUFF_SIZE) {
 			printf("error while writing \n");
-			fflush(stdout);
 		}
 	}
 

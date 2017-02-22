@@ -69,7 +69,7 @@ int main(int argc, char *argv[]) {
 				__LINE__);
 		exit(1);
 	}
-	longtime min = INT_MAX, max = -1, sum = 0, start = 0, end = 0, diff = 0;
+	longtime start = 0, end = 0;
 
 	printf("Downloading...\n");
 	int n = TRANSFER_SIZE / BUFF_SIZE;

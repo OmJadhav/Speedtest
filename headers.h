@@ -18,8 +18,6 @@
 #include <sys/mman.h>
 #include <arpa/inet.h>
 
-//#define _POSIX_C_SOURCE 199309L
-
 char output[1000] = {0};
 
 #define socketperror(format, ...) \
@@ -44,6 +42,7 @@ typedef long long int longint;
 
 timespec global_res;
 longtime global_time;
+
 /* Optimized macro */
 #define get_current_time() \
 	({ longtime global_time = 0;\
